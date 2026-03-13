@@ -27,6 +27,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     init.lenovo.rc
 
+# Keep recovery lean on Android 16 until the larger ramdisk reliably boots on
+# this 64 MiB recovery partition. We can re-enable these once recovery is
+# confirmed stable again.
+PRODUCT_PACKAGES -= \
+    fastbootd \
+    nano_recovery
+
 # Display
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/qdcm_calib_data_ft8719_focaltech_video_mode_dsi_panel.xml:$(TARGET_COPY_OUT_VENDOR)/etc/qdcm_calib_data_ft8719_focaltech_video_mode_dsi_panel.xml
